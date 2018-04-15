@@ -15,26 +15,7 @@ Resources:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
       TableName: Account
-  LambdaInvokePermission:
-    Type: 'AWS::Lambda::Permission'
-    Properties:
-      Action: 'lambda:InvokeFunction'
-      Principal: sns.amazonaws.com
-      FunctionName: !GetAtt
-        - FunctionTopicSubscription
-        - Arn
-      SourceArn: !Ref Topic
-  Subscription:
-    Type: 'AWS::SNS::Subscription'
-    Properties:
-      Endpoint: !GetAtt
-        - FunctionTopicSubscription
-        - Arn
-      Protocol: lambda
-      TopicArn: !Ref Topic
-    DependsOn:
-      - FunctionTopicSubscription
-  FunctionTopicSubscription:
+  Function:
     Type: 'AWS::Lambda::Function'
     Properties:
       Handler: index.handler
@@ -46,6 +27,25 @@ Resources:
       Timeout: '30'
     DependsOn:
       - LambdaExecutionRole
+  Subscription:
+    Type: 'AWS::SNS::Subscription'
+    Properties:
+      Endpoint: !GetAtt
+        - Function
+        - Arn
+      Protocol: lambda
+      TopicArn: !Ref Topic
+    DependsOn:
+      - Function
+  LambdaInvokePermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      Principal: sns.amazonaws.com
+      FunctionName: !GetAtt
+        - Function
+        - Arn
+      SourceArn: !Ref Topic
   LambdaExecutionRole:
     Type: 'AWS::IAM::Role'
     Properties:
@@ -68,11 +68,7 @@ Resources:
                 Resource: !Ref Topic
                 Effect: Allow
               - Action:
-                  - 'dynamodb:DeleteItem'
-                  - 'dynamodb:GetItem'
                   - 'dynamodb:PutItem'
-                  - 'dynamodb:Scan'
-                  - 'dynamodb:UpdateItem'
                 Resource: !GetAtt
                   - DynamoDBTable
                   - Arn

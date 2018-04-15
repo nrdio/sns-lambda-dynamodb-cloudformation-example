@@ -11,7 +11,7 @@ This [template](cloudformation-template.yaml) creates a CloudFormation stack com
 
 
 This template is intended to jump start Lambda development by putting otherwise extensive and fragmented information together. 
-Additional information is available at [Shift from Containers to Serverless Computing using AWS Lambda](http://woodo.space/shift-from-containers-to-serverless-computing-using-aws-lambda/)
+Additional information is available at [Shift from Containers to Serverless Computing using AWS Lambda - Part 2](https://woodo.space/post/shift-from-containers-to-serverless-computing-using-aws-lambda-part-2/)
 
 ## How to run?
 
@@ -42,7 +42,7 @@ Please copy SNS topic(AWS::SNS::Topic) ARN (PhysicalResourceId) from list of res
 Now you can publish a message to SNS topic using following command. Lambda should persist the event in Dynamoddb table.
 
 ```
-aws sns publish --topic-arn your-sns-topic-arn --message '{"name": "Foo", "iban": "NL38FRBK0292964727", "phoneNumber": "+31000000000"}'
+aws sns publish --topic-arn <your-sns-topic-arn> --message '{"name": "Foo", "iban": "NL38FRBK0292964727"}'
 ```
 
 
