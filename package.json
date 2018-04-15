@@ -1,0 +1,24 @@
+{
+  "name": "sns-lambda-dynamodb-cloudformation-example",
+  "version": "1.0.0",
+  "description": "This project demonstrate usage of CloudFormation template for creating a CloudFormation stack comprising of SNS topic, Subscription, Dynamodb table, Lambda persisting event in dynamodb table and IAM role",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nitin D",
+  "dependencies": {
+    "aws-sdk": "^2.224.1",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrdio/sns-lambda-dynamodb-cloudformation-example.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nrdio/sns-lambda-dynamodb-cloudformation-example.git/issues"
+  },
+  "homepage": "https://github.com/nrdio/sns-lambda-dynamodb-cloudformation-example.gitt#readme"
+}
