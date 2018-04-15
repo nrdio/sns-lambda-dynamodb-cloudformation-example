@@ -4,6 +4,7 @@
   "description": "This project demonstrate usage of CloudFormation template for creating a CloudFormation stack comprising of SNS topic, Subscription, Dynamodb table, Lambda persisting event in dynamodb table and IAM role",
   "main": "index.js",
   "scripts": {
+    "deploy": "./deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nitin D",
