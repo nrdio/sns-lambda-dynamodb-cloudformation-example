@@ -2,6 +2,9 @@ const AWS = require("aws-sdk");
 const uuid = require("uuid");
 AWS.config.update({region: "us-west-2"});
 
+// Create DynamoDB document client
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
 exports.handler = async (event) => {
     try {
         // Extract message
@@ -16,9 +19,6 @@ exports.handler = async (event) => {
                 iban: message.iban
             }
         };
-
-        // Create DynamoDB document client
-        const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
         // insert account in DynamoDB
         await dynamoDb.put(accountItem).promise();
