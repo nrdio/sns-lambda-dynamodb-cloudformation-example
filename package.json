@@ -9,7 +9,7 @@
   },
   "author": "Nitin D",
   "dependencies": {
-    "aws-sdk": "^2.596.0",
+    "aws-sdk": "^2.814.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {},
